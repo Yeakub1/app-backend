@@ -7,7 +7,7 @@ import { Server } from 'socket.io';
 dotenv.config();
 const app = express();
 
-app.use(cors({ origin: 'https://app-backend-ej0m.onrender.com', credentials: true }));
+app.use(cors());
 app.use(express.json());
 
 app.use("/uploads/recordings", express.static("uploads/recordings"));
