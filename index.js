@@ -7,7 +7,7 @@ import { Server } from 'socket.io';
 dotenv.config();
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'https://app-backend-ej0m.onrender.com', credentials: true }));
 app.use(express.json());
 
 app.use("/uploads/recordings", express.static("uploads/recordings"));
@@ -26,6 +26,10 @@ const io = new Server(server, {
 })
 
 global.onlineUsers = new Map();
+
+app.get("/", (req, res) => {
+    res.send("Chat App Server Running");
+});
 
 io.on('connection', (socket) => {
     global.chatSocket = socket;
